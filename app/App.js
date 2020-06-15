@@ -7,7 +7,7 @@ import {
   StatusBar,
   Text,
 } from 'react-native';
-import Artist from './components/Artist'
+import Artist from './components/Artist';
 
 const API_KEY = '829751643419a7128b7ada50de590067';
 
@@ -16,27 +16,28 @@ class App extends Component {
     super(props);
     this.getData();
     this.state = {
-      data: {topartists: {artist: []}}
+      data: {topartists: {artist: []}},
     }
   }
-  
+
   async getData() {
     await fetch('https://ws.audioscrobbler.com/2.0/', {
       method: 'post',
       body: 'method=geo.gettopartists&country=colombia&api_key='+API_KEY+'&format=json',
       headers: new Headers({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       })
     })
     .then((response) => {
       return response.text();
-    }).then((json) => {
+    })
+    .then((json) => {
       this.setState({data: JSON.parse(json)})
       //console.warn(this.state.data);
       return json;
     }).catch((error) => {
-      alert("error: " + error);
+      alert('error: ' + error);
     });
   }
 
@@ -57,9 +58,9 @@ class App extends Component {
                   this.state.data.topartists.artist.map(
                     (artist, index) => {
                       return (
-                        <View key={index} style={styles.artistContainer}>
-                          <Artist data={artist}/>
-                        </View>
+                      <View key={index} style={styles.artistContainer}>
+                        <Artist data={artist} />
+                      </View>
                       );
                     }
                   )

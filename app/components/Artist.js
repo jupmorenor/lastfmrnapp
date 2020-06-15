@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { 
-  Text,  
-  Linking, 
+  Text,
+  Linking,
   Image,
   StyleSheet,
   TouchableOpacity,
@@ -9,7 +9,7 @@ import {
 
 class Artist extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.artist = props.data;
   }
   
@@ -24,11 +24,11 @@ class Artist extends Component {
           {
             this.artist.image.map(
               (image, index) => {
-                if (image.size == "large") {
+                if (image.size === 'large') {
                   return (
                     <Image 
                       key={index} 
-                      source={{uri: image["#text"]}} 
+                      source={{uri: image['#text']}} 
                       style={styles.imageStyle} 
                     />
                   );
@@ -38,8 +38,8 @@ class Artist extends Component {
         </TouchableOpacity>
         <Text style={styles.sectionTitle}>{this.artist.name}</Text>
         <Text style={styles.sectionDescription}>Listeners: {this.artist.listeners}</Text>
-        <Text style={styles.sectionDescription}>Streamable: {this.artist.streamable == "0" ? "No" : "Si" }</Text>
-      </>      
+        <Text style={styles.sectionDescription}>Streamable: {this.artist.streamable == '0' ? 'No' : 'Si' }</Text>
+      </> 
     );
   }
 }
@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#000',
   },
-  imageStyle : {
-    width: 150, 
-    height: 150, 
-    borderRadius: 15, 
-    marginTop: 5
-  }
-})
+  imageStyle: {
+    width: 150,
+    height: 150,
+    borderRadius: 15,
+    marginTop: 5,
+  },
+});
 
 export default Artist;
